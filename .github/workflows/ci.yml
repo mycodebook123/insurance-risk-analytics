@@ -1,0 +1,27 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, task-1, task-2, task-3, task-4 ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install flake8 pytest pandas numpy scipy scikit-learn
+
+      - name: Lint with flake8
+        run: flake8 src/ --max-line-length=120 --ignore=E501,W503
+
+      - name: Run tests
+        run: pytest tests/ -v
