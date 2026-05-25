@@ -1,10 +1,11 @@
 # Data files - tracked by DVC not Git
-data/
-*.txt
-*.csv
-*.db
+data/*.txt
+data/*.csv
+data/*.db
+data/plot*.png
+data/plot*.jpg
 
-# DVC
+# DVC cache
 /tmp
 
 # Python
