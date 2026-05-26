@@ -4,7 +4,7 @@ sys.path.insert(0, '.')
 import warnings
 warnings.filterwarnings('ignore')
 from src.data_loader import load_data, add_derived_metrics
-from src.hypothesis_tests import test_provinces, test_zipcodes_risk, test_zipcodes_margin, test_gender
+from src.hypothesis_tests import run_provinces, run_zipcodes_risk, run_zipcodes_margin, run_gender
 import pandas as pd
 
 print("="*50)
@@ -16,22 +16,22 @@ df = add_derived_metrics(df)
 print(f"Dataset loaded: {df.shape}\n")
 
 print("Running H1: Province risk differences...")
-h1 = test_provinces(df)
+h1 = run_provinces(df)
 print(f"  p-value: {h1['p_value']} → {h1['Decision']}")
 print(f"  {h1['Interpretation']}\n")
 
 print("Running H2: Zip code risk differences...")
-h2 = test_zipcodes_risk(df)
+h2 = run_zipcodes_risk(df)
 print(f"  p-value: {h2['p_value']} → {h2['Decision']}")
 print(f"  {h2['Interpretation']}\n")
 
 print("Running H3: Zip code margin differences...")
-h3 = test_zipcodes_margin(df)
+h3 = run_zipcodes_margin(df)
 print(f"  p-value: {h3['p_value']} → {h3['Decision']}")
 print(f"  {h3['Interpretation']}\n")
 
 print("Running H4: Gender risk differences...")
-h4 = test_gender(df)
+h4 = run_gender(df)
 print(f"  p-value: {h4['p_value']} → {h4['Decision']}")
 print(f"  {h4['Interpretation']}\n")
 
